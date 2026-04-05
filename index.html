@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORI Academy – Lộ Trình Luyện Phỏng Vấn Hàng Không</title>
+<meta name="description" content="ORI Academy đồng hành cùng hàng nghìn học viên chinh phục bầu trời từ 2016. Lộ trình luyện phỏng vấn hàng không cá nhân hóa.">
+<style>
+/* Base Styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, Helvetica, sans-serif; color: #333333; background-color: #ffffff; line-height: 1.6; }
+a { text-decoration: none; }
+
+/* Color Variables */
+:root {
+    --text-main: #333333;
+    --bg-white: #ffffff;
+    --bg-light: #f4f7f6;
+    --blue: #0056b3; 
+    --blue-dark: #004494;
+    --green: #28a745; 
+    --orange: #fd7e14; 
+    --orange-dark: #e36a0b;
+    --premium: #6f42c1; 
+    --silver: #8391a2;
+}
+
+/* Typography & General */
+h1, h2, h3, h4 { color: var(--blue); margin-bottom: 15px; line-height: 1.3; }
+h1 { font-size: 2.5rem; font-weight: bold; }
+h2 { font-size: 2rem; font-weight: bold; text-align: center; margin-bottom: 30px; }
+h3 { font-size: 1.5rem; }
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+section { padding: 60px 0; }
+.bg-light { background-color: var(--bg-light); }
+
+/* Header & Nav */
+header { background-color: var(--bg-white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; max-width: 1200px; margin: 0 auto; }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-text h2 { margin: 0; color: var(--blue); font-size: 1.5rem; }
+.logo-text p { font-size: 0.8rem; color: #666; font-weight: bold; }
+
+/* Buttons */
+.btn { display: inline-block; padding: 12px 25px; border-radius: 5px; font-weight: bold; text-align: center; cursor: pointer; transition: 0.3s; }
+.btn-orange { background-color: var(--orange); color: var(--bg-white); }
+.btn-orange:hover { background-color: var(--orange-dark); transform: translateY(-2px); }
+.btn-blue { background-color: var(--blue); color: var(--bg-white); }
+.btn-blue:hover { background-color: var(--blue-dark); transform: translateY(-2px); }
+
+/* Hero Section */
+.hero { background: linear-gradient(135deg, #e6f0fa 0%, #ffffff 100%); text-align: center; padding: 80px 20px; }
+.hero h1 span { color: var(--orange); }
+.hero p.tagline { font-size: 1.2rem; color: var(--green); font-weight: bold; margin-bottom: 20px; }
+.hero p.desc { font-size: 1.1rem; max-width: 800px; margin: 0 auto 30px auto; color: var(--text-main); }
+
+/* Differentiators Grid */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+.feature-card { background: var(--bg-white); padding: 30px 20px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border-top: 4px solid var(--blue); transition: 0.3s; }
+.feature-card:hover { transform: translateY(-5px); }
+.feature-card.green { border-color: var(--green); }
+.feature-card.orange { border-color: var(--orange); }
+.feature-icon { font-size: 2.5rem; margin-bottom: 15px; }
+
+/* Packages Grid */
+.packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; align-items: stretch; margin-bottom: 40px; }
+.package-card { background: var(--bg-white); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: 0.3s; display: flex; flex-direction: column; height: 100%; border: 1px solid #eaeaea; }
+.package-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+
+/* Elite Center Styling */
+.elite-wrapper { display: flex; justify-content: center; width: 100%; padding-top: 10px; }
+.package-card.pkg-elite { max-width: 950px; width: 100%; border: 3px solid var(--orange); box-shadow: 0 10px 40px rgba(253,126,20,0.15); }
+.package-card.pkg-elite:hover { transform: scale(1.02); box-shadow: 0 15px 50px rgba(253,126,20,0.25); }
+@media (min-width: 992px) {
+    .package-card.pkg-elite { flex-direction: row; }
+    .pkg-elite .pkg-header { flex: 0 0 30%; display: flex; flex-direction: column; justify-content: center; }
+    .pkg-elite .pkg-body { flex: 1; border-left: 1px solid #eaeaea; border-right: 1px solid #eaeaea; }
+    .pkg-elite .pkg-footer { flex: 0 0 25%; display: flex; flex-direction: column; justify-content: center; border-top: none; }
+}
+.pkg-header { padding: 30px 20px; text-align: center; color: var(--bg-white); }
+.pkg-basic .pkg-header { background-color: var(--green); }
+.pkg-silver .pkg-header { background-color: var(--silver); }
+.pkg-premium .pkg-header { background-color: var(--blue); }
+.pkg-elite .pkg-header { background: linear-gradient(135deg, var(--premium), var(--orange)); }
+.pkg-header h3 { color: var(--bg-white); margin-bottom: 10px; }
+.pkg-price { font-size: 1.5rem; font-weight: bold; margin: 15px 0; }
+.pkg-body { padding: 30px 20px; flex-grow: 1; }
+.pkg-body h4 { color: var(--orange); font-size: 1rem; margin-top: 20px; border-bottom: 2px dashed #eaeaea; padding-bottom: 5px; }
+.pkg-body ul { list-style: none; margin-bottom: 20px; }
+.pkg-body ul li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.95rem; }
+.pkg-body ul li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: bold; }
+.pkg-footer { padding: 20px; text-align: center; border-top: 1px solid #eaeaea; }
+.highlight { background-color: #fff2e5; padding: 5px 8px; border-radius: 5px; color: var(--orange); font-weight: bold; display: inline-block; margin-bottom: 10px; }
+
+/* Call to Action & Footer */
+.cta-section { background-color: var(--blue); color: var(--bg-white); text-align: center; }
+.cta-section h2 { color: var(--bg-white); }
+footer { background-color: #222222; color: #cccccc; padding: 40px 20px; text-align: center; }
+footer p { margin-bottom: 10px; font-size: 0.9rem; }
+
+/* Responsive */
+@media (max-width: 768px) { h1 { font-size: 2rem; } .nav-container { flex-direction: column; gap: 15px; } .hero { padding: 40px 20px; } }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <span style="font-size: 2rem;">✈️</span>
+            <div class="logo-text">
+                <h2>ORI ACADEMY</h2>
+                <p>Từ 2016 – Luyện Phỏng Vấn</p>
+            </div>
+        </div>
+        <a href="#packages" class="btn btn-orange">Nhận Tự Vấn Ngay</a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>LỘ TRÌNH LUYỆN <br><span>PHỎNG VẤN HÀNG KHÔNG</span></h1>
+        <p class="tagline">"Không học lan man – Học đúng thứ đi thi sẽ gặp"</p>
+        <p class="desc">ORI Academy đã đồng hành cùng hàng nghìn học viên chinh phục bầu trời từ năm 2016. Tại đây, mỗi lộ trình được thiết kế riêng biệt – không template sáo rỗng, không học thuộc lòng máy móc. Chúng tôi giúp bạn xây dựng tư duy "nghĩ đúng" và thần thái của một tiếp viên hàng không thực thụ ngay từ những bước đầu tiên.</p>
+        <a href="#packages" class="btn btn-blue">Xem Các Gói Tư Vấn</a>
+    </div>
+</section>
+
+<section class="bg-light">
+    <div class="container">
+        <h2>ĐIỂM KHÁC BIỆT TẠI ORI</h2>
+        <div class="features-grid">
+            <div class="feature-card blue">
+                <div class="feature-icon">👩‍🏫</div>
+                <h3>Coaching 1:1</h3>
+                <p>Chỉnh từng học viên. Cá nhân hoá toàn bộ câu trả lời, không dùng template.</p>
+            </div>
+            <div class="feature-card green">
+                <div class="feature-icon">🧠</div>
+                <h3>Tư duy đúng gu</h3>
+                <p>Không học thuộc – học tư duy "đúng form hãng bay". Xây dựng câu chuyện riêng.</p>
+            </div>
+            <div class="feature-card orange">
+                <div class="feature-icon">🎯</div>
+                <h3>Thực tế 100%</h3>
+                <p>Bộ câu hỏi từ nhiều hãng. Lộ trình rõ ràng từ 0 → Mock interview tự tin thi luôn.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="packages">
+    <div class="container">
+        <h2>LỘ TRÌNH DÀNH RIÊNG CHO BẠN</h2>
+        <div class="packages-grid">
+            
+            <!-- GÓI BASIC -->
+            <div class="package-card pkg-basic">
+                <div class="pkg-header">
+                    <h3>Gói Basic</h3>
+                    <p>KHỞI ĐẦU VỮNG CHẮC</p>
+                    <div class="pkg-price">Nền Tảng Phỏng Vấn</div>
+                </div>
+                <div class="pkg-body">
+                    <p>Dành cho người mới bắt đầu. Học đúng, đủ và tự tin.</p>
+                    <h4>DAY 1: Hiểu Mình + Hãng</h4>
+                    <ul>
+                        <li>Hồ sơ chuẩn mindset HR</li>
+                        <li>Xây dựng tư duy trả lời</li>
+                    </ul>
+                    <h4>DAY 2-3: Luyện Các Vòng</h4>
+                    <ul>
+                        <li>Học toàn bộ các vòng thi</li>
+                        <li>Soạn & chỉnh câu trả lời cá nhân</li>
+                    </ul>
+                    <h4>DAY 4: Xử Lý Tình Huống</h4>
+                    <ul>
+                        <li>Cách trả lời câu tình huống</li>
+                        <li>Tránh bị "đứng hình" khi thi</li>
+                    </ul>
+                    <h4>DAY 5-6: Mock Interview</h4>
+                    <ul>
+                        <li>Mô phỏng quy trình thi thật</li>
+                        <li>Quay video - chỉnh sửa thái độ</li>
+                    </ul>
+                </div>
+                <div class="pkg-footer"><a href="#" class="btn btn-orange" style="width:100%">Đăng ký Basic</a></div>
+            </div>
+
+            <!-- GÓI SILVER -->
+            <div class="package-card pkg-silver">
+                <div class="pkg-header">
+                    <h3>Gói Silver</h3>
+                    <p>TOÀN DIỆN & CHUYÊN SÂU</p>
+                    <div class="pkg-price">12 Buổi Coaching</div>
+                </div>
+                <div class="pkg-body">
+                    <span class="highlight" style="display:block; margin-bottom:10px;">🎁 Giao tiếp phản xạ (Lớp 246: 6h30-8pm)</span>
+                    <p>Giúp bạn không chỉ "biết nói" mà còn "nói hay".</p>
+                    <h4>DAY 1-4: Nội Dung</h4>
+                    <ul>
+                        <li>Phân tích vị trí & Framework</li>
+                        <li>Soạn bộ câu hỏi cá nhân 1:1</li>
+                    </ul>
+                    <h4>DAY 5-8: Phát Âm & Ngữ Điệu</h4>
+                    <ul>
+                        <li>Chỉnh sửa ngữ điệu (lên, xuống)</li>
+                        <li>Loại bỏ kiểu nói robot</li>
+                    </ul>
+                    <h4>DAY 9-10: Phản Xạ</h4>
+                    <ul>
+                        <li>Hỏi-đáp liên tục không chuẩn bị</li>
+                        <li>Xử lý khi: Quên ý, bị hỏi dồn</li>
+                    </ul>
+                    <h4>DAY 11-12: Thần Thái</h4>
+                    <ul>
+                        <li>Luyện đi đứng, eye contact</li>
+                        <li>Mock Interview quay video</li>
+                    </ul>
+                </div>
+                <div class="pkg-footer"><a href="#" class="btn btn-orange" style="width:100%">Đăng ký Silver</a></div>
+            </div>
+
+            <!-- GÓI PREMIUM -->
+            <div class="package-card pkg-premium">
+                <div class="pkg-header">
+                    <h3>Gói Premium</h3>
+                    <p>GLOBAL REACH - QUỐC TẾ</p>
+                    <div class="pkg-price">8.000.000đ</div>
+                    <p>22 Buổi Coaching</p>
+                </div>
+                <div class="pkg-body">
+                    <span class="highlight" style="display:block; margin-bottom:10px;">🎁 Tặng Giao tiếp (5Tr) - Lớp 246 từ 6h30-8pm</span>
+                    <p>Chinh phục hãng quốc tế & nội địa.</p>
+                    <h4>DAY 1-6: Định Hướng & Build Câu</h4>
+                    <ul>
+                        <li>CV chuẩn quốc tế & Mindset CC</li>
+                        <li>Tình huống STAR / Service logic</li>
+                    </ul>
+                    <h4>DAY 7-14: Test & Kỹ năng</h4>
+                    <ul>
+                        <li>Luyện English Test & Math Test</li>
+                        <li>Group Discussion & Thuyết trình</li>
+                    </ul>
+                    <h4>DAY 15-22: Phát Âm & Final</h4>
+                    <ul>
+                        <li>Chỉnh sửa accent chuẩn quốc tế</li>
+                        <li>Mock Interview (Quốc tế + VN)</li>
+                    </ul>
+                </div>
+                <div class="pkg-footer"><a href="#" class="btn btn-orange" style="width:100%">Đăng ký Premium</a></div>
+            </div>
+        </div> <!-- End packages-grid -->
+
+        <!-- GÓI ELITE (Centered) -->
+        <div class="elite-wrapper">
+            <div class="package-card pkg-elite">
+                <div class="pkg-header">
+                    <h3>Gói Elite</h3>
+                    <p>THE CAREER PARTNER</p>
+                    <div class="pkg-price">10.000.000đ</div>
+                    <p>Cam kết đến khi đậu Final</p>
+                </div>
+                <div class="pkg-body">
+                    <span class="highlight" style="display:block; margin-bottom:5px;">🔥 Coaching KHÔNG GIỚI HẠN</span>
+                    <span class="highlight" style="display:block; margin-bottom:10px;">🎁 Tặng Giao tiếp (Lớp 246: 6h30-8pm)</span>
+                    <p>Đồng hành chiến lược đến khi bạn có việc.</p>
+                    <h4>Giai đoạn 1 – 3</h4>
+                    <ul>
+                        <li>Chiến lược thi theo timeline</li>
+                        <li>Cá nhân hoá toàn bộ (No template)</li>
+                        <li>Master câu hỏi khó & áp lực</li>
+                    </ul>
+                    <h4>Giai đoạn 4 – 5</h4>
+                    <ul>
+                        <li>Phát âm & Phản xạ chuyên sâu</li>
+                        <li>Mock interview KHÔNG GIỚI HẠN</li>
+                    </ul>
+                    <h4>Giai đoạn 6 & Đặc Quyền</h4>
+                    <ul>
+                        <li>Hỗ trợ việc làm ở sân bay</li>
+                        <li>CV chuyên biệt 03 lần</li>
+                        <li>Cam kết học đến khi đậu Final ✔</li>
+                    </ul>
+                </div>
+                <div class="pkg-footer"><a href="#" class="btn btn-orange" style="width:100%">Trở thành Elite</a></div>
+            </div>
+        </div> <!-- End elite-wrapper -->
+
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Đồng Hành Cùng ORI, Chinh Phục Ngành Hàng Không!</h2>
+        <p style="margin-top: 20px; font-size: 1.2rem; margin-bottom: 20px;">"Đây không phải khóa học – Đây là người đồng hành để bạn có việc trong ngành hàng không ✈️"</p>
+        <div style="background-color: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px; max-width: 650px; margin: 0 auto 30px auto; font-size: 1.1rem; line-height: 1.8;">
+            <strong>📍 Hình Thức Học:</strong> Online qua Zoom hoặc Offline tại ORI<br>
+            <span style="font-size: 1rem;">Địa chỉ: 135 Bạch Đằng, P. Tân Sơn Hòa, Q. Tân Bình, TP.HCM</span><br>
+            <strong>📞 Hotline:</strong> 0906 303 373 (Mrs Diễm) hoặc 0707 010 879 (Mrs Loan)
+        </div>
+        <a href="#" class="btn btn-orange" style="font-size: 1.2rem; padding: 15px 40px;">Nhắn Tin Hoặc Gọi Ngay</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <h2 style="color: #ffffff; margin-bottom: 10px;">ORI ACADEMY</h2>
+        <p>Chuyên luyện phỏng vấn hàng không từ 2016.</p>
+        <p>📍 Địa chỉ: 135 Bạch Đằng, P. Tân Sơn Hòa, Q. Tân Bình, TP.HCM</p>
+        <p>💻 Hình thức: Online (Zoom) hoặc Offline</p>
+        <p>📞 Hotline: 0906 303 373 (Mrs Diễm) - 0707 010 879 (Mrs Loan)</p>
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #888;">&copy; 2026 ORI Academy. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
